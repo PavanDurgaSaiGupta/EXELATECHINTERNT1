@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Cost Management Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Azure Cost Management Dashboard</h1>
+            <div class="mock-data-toggle">
+                <span class="toggle-label-left">Real Data</span>
+                <label class="switch">
+                    <input type="checkbox" id="mock-data-switch">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">Mock Data</span>
+            </div>
+            <p id="real-data-subtitle" class="subtitle">Displaying real-time data from Azure</p>
+        </header>
+
+        <div class="toolbar">
+            <div id="timeframe-selector" class="timeframe-selector">
+                <button id="daily-btn" class="active">Daily</button>
+                <button id="weekly-btn">Weekly</button>
+                <button id="monthly-btn">Monthly</button>
+            </div>
+            <a id="export-csv-btn" href="/export-csv?timeframe=daily" class="export-btn">Export CSV</a>
+        </div>
+
+        <div class="metrics-container">
+            <div class="metric">
+                <h3>Total Cost</h3>
+                <p id="total-cost">$0.00</p>
+            </div>
+            <div class="metric">
+                <h3>Avg Daily Cost</h3>
+                <p id="avg-daily-cost">$0.00</p>
+            </div>
+            <div class="metric">
+                <h3>Forecasted Cost</h3>
+                <p id="forecasted-cost">$0.00</p>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3 id="spending-trend-title">Spending Trend</h3>
+                <canvas id="spending-trend-chart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3 id="resource-distribution-title">Cost Distribution</h3>
+                <canvas id="resource-distribution-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
